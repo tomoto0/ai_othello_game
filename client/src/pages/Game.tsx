@@ -36,9 +36,9 @@ export default function Game() {
       </div>
 
       {/* Main game area - Responsive layout */}
-      <div className="flex-1 flex flex-col lg:flex-row gap-4 p-4 overflow-hidden min-h-0">
+      <div className="flex-1 flex flex-col lg:flex-row gap-4 p-4 overflow-hidden min-h-0 lg:justify-center lg:items-center">
         {/* Top info panel (mobile) / Left side (desktop) - Game board */}
-        <div className="flex flex-col lg:flex-row gap-4 flex-1 min-h-0 lg:min-w-0">
+        <div className="flex flex-col lg:flex-row gap-4 flex-1 min-h-0 lg:min-w-0 lg:max-w-6xl">
           {/* Score and Status - Top on mobile, left on desktop */}
           <div className="flex flex-col gap-3 lg:hidden flex-shrink-0">
             {/* Score */}
@@ -54,53 +54,53 @@ export default function Game() {
 
           {/* Game board - Full width on mobile, flex-1 on desktop */}
           <div className="flex-1 flex flex-col items-center justify-center min-h-0 lg:min-w-0">
-            <div className="w-full h-full flex items-center justify-center max-w-[600px] max-h-[600px] lg:max-w-full lg:max-h-full">
+            <div className="w-full h-full flex items-center justify-center max-w-[600px] max-h-[600px] lg:max-w-[500px] lg:max-h-[500px]">
               <GameBoard />
             </div>
           </div>
-        </div>
 
-        {/* Right side - Info panel (desktop only) */}
-        <div className="hidden lg:flex lg:flex-col gap-3 lg:w-72 overflow-y-auto pr-2">
-          {/* Score */}
-          <div className="bg-slate-800/50 rounded-lg p-3 backdrop-blur-sm border border-slate-700 flex-shrink-0">
-            <ScorePanel />
-          </div>
+          {/* Right side - Info panel (desktop only) */}
+          <div className="hidden lg:flex lg:flex-col gap-3 lg:w-80 overflow-y-auto pr-2">
+            {/* Score */}
+            <div className="bg-slate-800/50 rounded-lg p-4 backdrop-blur-sm border border-slate-700 flex-shrink-0">
+              <ScorePanel />
+            </div>
 
-          {/* Status */}
-          <div className="bg-slate-800/50 rounded-lg p-3 backdrop-blur-sm border border-slate-700 flex-shrink-0">
-            <StatusMessage />
-          </div>
+            {/* Status */}
+            <div className="bg-slate-800/50 rounded-lg p-4 backdrop-blur-sm border border-slate-700 flex-shrink-0">
+              <StatusMessage />
+            </div>
 
-          {/* Controls */}
-          <div className="bg-slate-800/50 rounded-lg p-3 backdrop-blur-sm border border-slate-700 space-y-2 flex-shrink-0">
-            <button
-              onClick={newGame}
-              className="w-full px-3 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all whitespace-nowrap"
-            >
-              🔄 新規ゲーム
-            </button>
-            <button
-              onClick={undoMove}
-              disabled={state.moveHistory.length === 0 || state.isAIThinking}
-              className="w-full px-3 py-2 rounded-lg bg-slate-700 text-white text-xs font-semibold hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
-            >
-              ↶ 戻す
-            </button>
-            <button
-              onClick={handleBackHome}
-              className="w-full px-3 py-2 rounded-lg bg-slate-700 text-white text-xs font-semibold hover:bg-slate-600 transition-all whitespace-nowrap"
-            >
-              ← ホーム
-            </button>
-          </div>
+            {/* Controls */}
+            <div className="bg-slate-800/50 rounded-lg p-4 backdrop-blur-sm border border-slate-700 space-y-2 flex-shrink-0">
+              <button
+                onClick={newGame}
+                className="w-full px-3 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all whitespace-nowrap"
+              >
+                🔄 新規ゲーム
+              </button>
+              <button
+                onClick={undoMove}
+                disabled={state.moveHistory.length === 0 || state.isAIThinking}
+                className="w-full px-3 py-2.5 rounded-lg bg-slate-700 text-white text-sm font-semibold hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+              >
+                ↶ 戻す
+              </button>
+              <button
+                onClick={handleBackHome}
+                className="w-full px-3 py-2.5 rounded-lg bg-slate-700 text-white text-sm font-semibold hover:bg-slate-600 transition-all whitespace-nowrap"
+              >
+                ← ホーム
+              </button>
+            </div>
 
-          {/* Game info */}
-          <div className="bg-slate-800/50 rounded-lg p-3 backdrop-blur-sm border border-slate-700 text-xs space-y-1 flex-shrink-0">
-            <div className="text-gray-400 space-y-1">
-              <div className="truncate">移動数: {state.moveHistory.length}</div>
-              <div className="truncate">有効な移動: {state.validMoves.length}</div>
-              {state.isAIThinking && <div className="text-yellow-400 mt-1 truncate">🤖 AI思考中...</div>}
+            {/* Game info */}
+            <div className="bg-slate-800/50 rounded-lg p-4 backdrop-blur-sm border border-slate-700 text-sm space-y-2 flex-shrink-0">
+              <div className="text-gray-400 space-y-1.5">
+                <div className="truncate">移動数: {state.moveHistory.length}</div>
+                <div className="truncate">有効な移動: {state.validMoves.length}</div>
+                {state.isAIThinking && <div className="text-yellow-400 mt-2 truncate">🤖 AI思考中...</div>}
+              </div>
             </div>
           </div>
         </div>
