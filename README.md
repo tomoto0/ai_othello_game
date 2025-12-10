@@ -330,6 +330,5 @@ For issues, questions, or feature requests, please contact:
 
 ---
 
-**Last Updated:** December 2024
-**Deployment Status:** ✅ Active
 **Live URL:** https://manusothello-9glwxj8k.manus.space
+**Last Updated:** December 2025
